@@ -13,12 +13,15 @@ const images = [
   },
 ];
 const list = document.querySelector(".gallery");
-const array = [];
-images.forEach((img) => {
-  const newItem = document.createElement("img");
-  newItem.setAttribute("url", img.url);
-  newItem.setAttribute("alt", img.alt);
-  array.push(newItem);
-});
-const markup = array.map((item) => `<li>${item}</li>`).join("");
-list.insertAdjacentHTML("beforeend", markup);
+list.style.listStyleType = "none";
+const style =
+  "<style>.img {width: 850px; box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; margin-bottom: 40px ;border-radius: 10px; }</style>";
+
+list.insertAdjacentHTML("beforebegin", style);
+const markup = images
+  .map(
+    (item) =>
+      `<li id="li"><img src=${item.url} alt=${item.alt} class="img"></li>`
+  )
+  .join("");
+list.insertAdjacentHTML("afterbegin", markup);
