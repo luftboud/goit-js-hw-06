@@ -8,12 +8,16 @@ let ingredients = [
 ];
 
 let list = document.querySelector("#ingredients");
+let preList = "";
 ingredients.forEach(renderElementList);
 
 function renderElementList(element) {
   let li = document.createElement("li");
   li.classList.add("item");
-  list.append(li);
-  li.innerHTML = li.innerHTML + element;
+  li.textContent = element;
+  preList += li.outerHTML;
   console.log(li);
+  console.log(li.innerHTML);
+  console.log(preList);
 }
+list.insertAdjacentHTML("afterbegin", preList);
